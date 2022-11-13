@@ -12,6 +12,7 @@ import {
   Tabs,
   TabList,
   Tab,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { getDolar } from "../api/dolarsiApi";
 import { formatearDivizaARS } from "../utilities/toLocaleString";
@@ -28,13 +29,18 @@ const CotizadorUSD = () => {
   }, []);
 
   const ArrayDolarOficial = dolar.slice(0, 1);
-
   const dolarOficial = parseFloat(ArrayDolarOficial[0]?.casa?.venta);
+
+  ///////////////////////////////////////////
+  //DARKMODE
+
+  const bg = useColorModeValue("gray.100", "gray.700");
 
   return (
     <Stack
-      backgroundColor="gray.100"
+      backgroundColor={bg}
       width={{ base: "330px" }}
+      height={{ base: "470px" }}
       p={5}
       shadow="md"
       rounded="xl"

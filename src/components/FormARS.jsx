@@ -6,6 +6,7 @@ import {
   InputLeftElement,
   Stack,
   Alert,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import argentinaFlag from "../assets/icons/argentinaFlag.svg";
 
@@ -32,9 +33,10 @@ const FormARS = ({
     setImpuestoGanancias(impuestoGanancias);
     setImpuestoPais(impuestoPais);
     setResultado(total);
-
-
   };
+
+  //DARKMODE
+  const bg = useColorModeValue("white", "gray.700");
 
   return (
     <form onSubmit={cotizarMonto}>
@@ -56,14 +58,22 @@ const FormARS = ({
             onChange={(e) =>
               e.target.value > 0 ? setMonto(e.target.value) : setMonto(0)
             }
-            backgroundColor="white"
+            backgroundColor={bg}
             min={1}
             max={999999999}
             step="any"
           />
         </InputGroup>
 
-        <Button type="submit" backgroundColor="blue.400" color="white">
+        <Button
+          _hover={{
+            backgroundColor: "blue.500",
+            color: "white",
+          }}
+          type="submit"
+          backgroundColor="blue.400"
+          color="white"
+        >
           Cotizar
         </Button>
       </Stack>

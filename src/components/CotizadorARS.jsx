@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import FormARS from "./FormARS";
-import { Spinner, Grid, Box, Text, Stack, Badge } from "@chakra-ui/react";
+import { Spinner, Grid, Box, Text, Stack, Badge, useColorModeValue } from "@chakra-ui/react";
 
 import { formatearDivizaARS } from "../utilities/toLocaleString";
 
@@ -11,14 +11,19 @@ const CotizadorARS = () => {
   const [impuestoPais, setImpuestoPais] = useState(0);
   const [sinImpuestos, setSinImpuestos] = useState(0);
 
+  //DARKMODE
+
+  const bg = useColorModeValue("gray.100", "gray.700");
+
   return (
     <Stack
-      backgroundColor="gray.100"
+      backgroundColor={bg}
       width={{ base: "330px" }}
+      height={{ base: "470px" }}
       p={5}
       shadow="md"
       rounded="xl"
-      gap={5}
+      gap={12}
     >
       <Stack>
         <FormARS
@@ -37,13 +42,13 @@ const CotizadorARS = () => {
           </Text>
         </Text>
         <Text>
-          Impuesto a la ganancia (45%):{" "}
+          Impuesto a las ganancias (45%):{" "}
           <Text as="span" fontWeight="semibold">
             {formatearDivizaARS(impuestoGanancias)}
           </Text>
         </Text>
         <Text>
-          Impuesto al pais (30%):{" "}
+          Impuesto PAIS (30%):{" "}
           <Text as="span" fontWeight="semibold">
             {formatearDivizaARS(impuestoPais)}
           </Text>
